@@ -18,6 +18,19 @@ int main(int argc, char** argv){
 
 
     // TODO: call barcode
+
+    char* barcode_value = argv[1];
+    int width=atoi(argv[2]);
+    int height=atoi(argv[3]);
+    char* output_filepath = argv[4];
+
+    struct image* output_image=barcode(barcode_value, width, height);
+
     
     // TODO: save result to file
+    saveimage(output_filepath, output_image);
+
+    free(output_image->pixels);
+    free(output_image);
+    return 0;
 }
